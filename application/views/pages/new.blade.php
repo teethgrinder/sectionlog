@@ -1,4 +1,4 @@
-@layout('layouts.default2')
+@layout('layouts.default')
 
 @section('title')
  Haberler

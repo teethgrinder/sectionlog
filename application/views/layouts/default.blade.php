@@ -10,22 +10,28 @@
 		{{ HTML::style('fancybox/jquery.fancybox-1.3.4.css');}}
 		{{ HTML::style('css/nivo-slider.css') }}
 		{{ HTML::style('css/styler-farbtastic.css') }}
-	<link rel="stylesheet" href="../css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+		{{ HTML::style('redactor/redactor.css') }}
+ 
 		<link href='http://fonts.googleapis.com/css?family=Headland+One' rel='stylesheet' type='text/css'>
  
 		{{ HTML::script('js/jquery.min.js') }}
 		{{ HTML::script('js/jquery-ui-1.8.17.custom.min.js') }}
-<script src="../js/jquery.prettyPhoto.js" type="text/javascript" charset="utf-8"></script>
 		{{ HTML::script('fancybox/jquery.fancybox-1.3.4.pack.js') }}
 		{{ HTML::script('js/jquery.nivo.slider.js') }}
-	 
 		{{ HTML::script('js/jquery.bgslider.js') }}
 		{{ HTML::script('js/preloader.js') }}
-		{{ HTML::script('js/farbtastic.js') }}
+		{{ HTML::script('redactor/redactor.js') }}
+ 
+ 
 		{{ HTML::script('js/basic.js') }}
-		{{ HTML::script('js/jquery.tinycarousel.js') }}
-		{{ HTML::script('js/styler.js') }}	
-		{{ HTML::script('js/contact_form.js') }}
+		{{ HTML::script('js/ajax/ajaxml.js') }}
+		{{ HTML::script('js/jquery.ba-hashchange.js') }}
+	 
+
+
+ 
+
+
 
 			
 
@@ -43,6 +49,7 @@
 			jQuery(this).remove();jQuery('#sidebar').delay(800).animate({'margin-left':'0px'},2100);jQuery('#page').delay(800).animate({'margin-right':'0px','width':'666px'},
 			2100);});});
 		</script> 
+
 		<meta charset="UTF-8">
 	</head>
 	<body>
@@ -57,24 +64,15 @@
 		<!-- PAGE LOADING -->
 		<div id="hp_preloader"></div>
 		<!-- STYLER FOR DEMO -->
-		<div id="styler">
-			
-			
-				<ul id="texture">
-					<li><a href="#" id="styler-texture-1">None</a></li>
-					<li id="selected"><a href="#" id="styler-texture-2">Leather</a></li>
-					<li><a href="#" id="styler-texture-3">Carbon</a></li>
-				</ul>
-
-		
-			</div>
+ 
 
 			<!-- SITE WRAPPER -->
 <div id="wrapper">
 	<div id="page">
-
+ 
 @yield('content')
-
+ 
+				<!-- #content ends -->
 </div>
 				<!-- #page ends -->
 <!-- SIDEBAR -->
@@ -95,20 +93,21 @@
 		<div id="sidebar-content">
 			<!-- LOGO -->
 		<div id="logo">
-			<a href="./index.html">{{ HTML::image('images/logo.png') }}</a>
+			<a href="<?php echo URL::to('/'); ?>">{{ HTML::image('images/logo.png') }}</a> 
 		</div>
 		<!-- MENU -->
    <ul id="menu">
    <li class="current"><a href="<?php echo URL::to('/'); ?>">ANASAYFA</a></li>
-   <li>{{HTML::link_to_action('abouts', 'HAKKIMIZDA', array(), array('data-hash' => 'abouts'))}}</li>
+   <li>{{HTML::link_to_route('abouts', 'HAKKIMIZDA', array(), array( 'into'=>'content'))}}</li>
 
    <li>HİZMETLERİMİZ
 		<ul>
-			<li>{{HTML::link_to_route('services', 'Eğitim Hizmetlerimiz', array(), array('data-hash' => 'services'))}}</li>
+			<li>{{HTML::link_to_route('services', 'Eğitim Hizmetlerimiz', array(), array('data-hash' => 'services','into'=>'content'))}}</li>
 			<li>{{HTML::link_to_route('neuro', 'Neurofeedback', array(), array('data-hash' => 'neuro'))}}</li>
 			<li>{{HTML::link_to_route('bio', 'Biofeedback', array(), array('data-hash' => 'bio'))}}</li>
 	</ul>	
 </li>		
+<li>{{HTML::link_to_route('haberler', 'HABERLER', array(), array('data-hash' => 'haberler'))}}</li>
 <li>{{HTML::link_to_route('gallery', 'GALERİ', array(), array('data-hash' => 'gallery'))}}</li>
 		 
 		<li><a href="./blog4.html">SANAL TUR</a></li>
@@ -118,14 +117,14 @@
 			<li>{{HTML::link_to_route('map', 'İletişim Bilgileri', array(), array('data-hash' => 'map'))}}</li>
 			</ul>
 		</li>
-		<li>{{HTML::link_to_route('haberler', 'HABERLER', array(), array('data-hash' => 'haberler'))}}</li>
+		
 		 
 	</ul>
 </div>
 
 	<ul id="sidebar-bottom">
-		<li><a href="#">{{ HTML::image('images/facebook.png') }}</a></li>
-		<li><a href="#">{{ HTML::image('images/twitter.png') }}</a></li>
+		<li><a href="#">{{ HTML::image('images/sidebar_icons/facebook.png') }}</a></li>
+		<li><a href="#">{{ HTML::image('images/sidebar_icons/twitter.png') }}</a></li>
 			 @if ( Auth::guest() )
 <li>{{ HTML::link('admin', 'Giriş') }}</li>
 @else
@@ -140,6 +139,7 @@
 
 	</div>
 	<!-- #sidebar ends -->
+
 	</div>
 	<!-- #wrapper ends -->
 	<!-- BACKGROUND SLIDER -->
@@ -150,11 +150,24 @@
 		{{ HTML::image('images/bgslider-4.jpg') }}
 		{{ HTML::image('images/bgslider-5.jpg') }}
  </div>
-<script type="text/javascript" charset="utf-8">
-$(document).ready(function(){
-  $("area[rel^='gallery1']").prettyPhoto();
+
+<script>var baseUrl = function()
+{
+var l = window.location;
+var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
+return base_url;
+};</script>
+				    <script type="text/javascript">
+    $(document).ready(
+    function()
+    {
+    $('#body').redactor({
+	fixed: true,
+imageUpload: baseUrl()+'/public/questions/ajax/upload',
+imageGetJson: baseUrl()+'/public/questions/ajax/images'
 });
-</script>
- 
+    }
+    );
+    </script>
 </body>
 </html>

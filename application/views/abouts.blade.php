@@ -1,4 +1,4 @@
-@layout('layouts.default2')
+@layout('layouts.default')
 @section('title')
 Hakkımızda
 @endsection
@@ -13,7 +13,10 @@ Hakkımızda
 		<li>
 		<h3 style="text-align: center;"> 
 		{{ $subject->title }} </h3>
-		<div class="hr">	</div>
+			<div class="hr"></div>
+			 <blockquote class="align_right">
+<p>Pürdikkat eğitim için</p>
+</blockquote>
 		{{ $subject->body}}
 	</li>
  

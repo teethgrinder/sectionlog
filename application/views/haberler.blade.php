@@ -1,4 +1,4 @@
-@layout('layouts.default2')
+@layout('layouts.default')
 @section('title')
 Haberler
 @endsection
@@ -10,6 +10,11 @@ Haberler
 			<h3 style="text-align: center;"> 
 	 HABERLER</h3>
 	 			<div class="hr"></div>
+	 @if(Auth::check())
+    <a href="{{ URL::to('admin') }}">Yeni Haber Ekle</a>
+     	<div class="hr"></div>
+    @endif
+
 @foreach ($posts as $post)
 <div class="post">
 <h1>{{ HTML::link('view/'.$post->id, $post->title) }}</h1>

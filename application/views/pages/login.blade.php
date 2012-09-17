@@ -1,6 +1,6 @@
-@layout('layouts.default2')
+@layout('layouts.default')
 @section('content')
-<div id="content">
+ 
 		<div class="hr1"></div>
     {{ Form::open('login') }}
         <!-- check for login errors flash var -->
@@ -20,6 +20,5 @@
 					<div class="hr2"></div>
 					<!-- PURCHASE BUTTON -->
 					<!-- FEATURE TEXTS WITH SMALL ICONS -->
-	</div>
-						<!-- #content ends -->
+ 
 @endsection

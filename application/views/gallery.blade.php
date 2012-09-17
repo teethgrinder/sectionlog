@@ -1,4 +1,4 @@
-@layout('layouts.default2')
+@layout('layouts.default')
 @section('title')
 Hakkımızda
 @endsection
@@ -13,17 +13,16 @@ Hakkımızda
 
 
 
-<ul class="gallery1 clearfix">
-				<li><a href="../images/fullscreen/1.jpg" rel="prettyPhoto[gallery1]" title="You can add caption to pictures. You can add caption to pictures. You can add caption to pictures."><img src="../images/thumbnails/t_1.jpg" width="60" height="60" alt="Red round shape" /></a></li>
-				<li><a href="../images/fullscreen/2.jpg" rel="prettyPhoto[gallery1]"><img src="../images/thumbnails/t_2.jpg" width="60" height="60" alt="Nice building" /></a></li>
-				<li><a href="../images/fullscreen/3.jpg" rel="prettyPhoto[gallery1]"><img src="../images/thumbnails/t_3.jpg" width="60" height="60" alt="Fire!" /></a></li>
-				<li><a href="../images/fullscreen/4.jpg" rel="prettyPhoto[gallery1]"><img src="../images/thumbnails/t_4.jpg" width="60" height="60" alt="Rock climbing" /></a></li>
-				<li><a href="../images/fullscreen/5.jpg" rel="prettyPhoto[gallery1]"><img src="../images/thumbnails/t_5.jpg" width="60" height="60" alt="Fly kite, fly!" /></a></li>
-				<li><a href="../images/fullscreen/6.jpg" rel="prettyPhoto[gallery1]"><img src="../images/thumbnails/t_2.jpg" width="60" height="60" alt="Nice building" /></a></li>
-			</ul>
-        <a href="{{ URL::to("img/glyphicons-halflings.png") }}" rel="prettyPhoto[gallery1]">
-    {{ HTML::image('img/glyphicons-halflings.png', 'Rock climbing', array('height' => '60', 'width' => '60')) }}
-    </a>
+		<ul class="galleries">
+		<li><a href="./images/gallery-1.jpg" class="fancybox" rel="external"><span class="imghover_gallery"></span><img src="./images/gallery-1-tn.jpg" alt="" /></a></li>
+		<li><a href="./images/gallery-2.jpg" class="fancybox" rel="external"><span class="imghover_gallery"></span><img src="./images/gallery-2-tn.jpg" alt="" /></a></li>
+		<li><a href="./images/pfolio-6.jpg" class="fancybox" rel="external"><span class="imghover_gallery"></span><img src="./images/gallery-3-tn.jpg" alt="" /></a></li>
+		<li><a href="./images/gallery-4.jpg" class="fancybox" rel="external"><span class="imghover_gallery"></span><img src="./images/gallery-4-tn.jpg" alt="" /></a></li>
+		<li><a href="./images/gallery-5.jpg" class="fancybox" rel="external"><span class="imghover_gallery"></span><img src="./images/gallery-5-tn.jpg" alt="" /></a></li>
+		<li><a href="./images/gallery-6.jpg" class="fancybox" rel="external"><span class="imghover_gallery"></span><img src="./images/gallery-6-tn.jpg" alt="" /></a></li>
+		<li><a href="./images/gallery-7.jpg" class="fancybox" rel="external"><span class="imghover_gallery"></span><img src="./images/gallery-7-tn.jpg" alt="" /></a></li>
+		<li><a href="./images/gallery-8.jpg" class="fancybox" rel="external"><span class="imghover_gallery"></span><img src="./images/gallery-8-tn.jpg" alt="" /></a></li>
+		</ul>
 	
 			<!-- SIMPLE HORIZONTAL LINE -->
 			<div class="hr2"></div>

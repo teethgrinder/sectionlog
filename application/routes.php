@@ -31,7 +31,8 @@
 |		});
 |
 */
-Route::controller('pages'); 
+Route::controller('pages',
+'ajax'); 
 Route::get('/',array('as'=>'articles','uses'=>'pages@articles'));
 
 Route::get('abouts',array('as'=>'abouts','uses'=>'pages@abouts'));
@@ -43,13 +44,6 @@ Route::get('map',array('as'=>'map','uses'=>'pages@map'));
 Route::get('haberler',array('as'=>'haberler','uses'=>'pages@haberler'));
 Route::get('gallery',array('as'=>'gallery','uses'=>'pages@gallery'));
 
-/*Route::get('haberler', function() {
-// lets get our posts and eager load the
-// author
-$posts = Post::with('author')->all();
-return View::make('pages.home')
-->with('posts', $posts);
-});*/
 Route::get('view/(:num)', function($post) {
 	$post = Post::find($post);
 	return View::make('pages.full')
@@ -90,8 +84,27 @@ return Redirect::to('admin')
 // create the new post
 $post = new Post($new_post);
 $post->save();
+
 // redirect to viewing our new post
 return Redirect::to('view/'.$post->id);
+});
+Route::get('resizer', array('before' => 'auth', 'do' => function() {
+$user = Auth::user();
+return View::make('pages.resizer')->with('user', $user);
+}));
+Route::post('resizer', function() {
+$img = Input::file('picture');
+$id = Image::create(array($img['name']));
+// Save a thumbnail
+$success = Resizer::open( $img )
+->resize( 200 , 200 , 'crop' )
+->save( 'images/'.$id->id.'.ext' , 90 );
+if ( $success ) {
+return 'woohoo';
+ print_r($img);
+} else {
+return 'lame';
+}
 });
 
 Route::get('login', function() {

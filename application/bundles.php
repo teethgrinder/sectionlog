@@ -36,5 +36,8 @@
 return array(
 
 	'docs' => array('handles' => 'docs'),
-
+	'form-base-model'	=> array('auto' =>'true'),
+	 'laramce' => array('auto' => true),
+	 'imagine' => array('auto' => true),
+	 'resizer' => array( 'auto' => true ),
 );

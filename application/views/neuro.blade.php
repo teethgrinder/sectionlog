@@ -25,6 +25,7 @@ Neurofeedback’in çalışma prensibi de kişinin beyin dalgalarının ölçül
 şekilde bilgisayara aktarılması olduğu için kişi beyin dalgalarının kontrolü hakkında farkındalık kazanır.</p>		
 <p>Neurofeedback, görsel uyarılar sayesinde de beyin fonksiyonlarının direkt eğitilmesini sağlar.
 Beyin bu eğitim aracılığı ile fonksiyonlarını daha düzenli ve verimli hale getirir.</p>
+<p>Kısaca Neurofeedback, bireye beynini yönetmesini öğreten bir eğitim sürecidir.</p>
 <h4><strong>NEUROFEEDBACK UYGULAMASI</strong><br /><br /></h4>
 <p>Eğitim, gelişmiş bilgisayar programları ve bir cihaz yardımıyla yapılır. Kişi kendi şetçiği sınırsız
 görsel, animasyon ve oyunları ekrandan izlerken, elde ettiği anlık geri bildirimler sayesinde beynini
