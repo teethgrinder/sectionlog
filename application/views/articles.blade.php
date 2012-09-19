@@ -30,9 +30,8 @@
 </blockquote>
 						
 	<p class="justify">
-<span class="dropcap">L</span>
-orem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id rhoncus orci. Mauris elementum, quam sed volutpat iaculis, nisi mauris tempor erat, sit amet vestibulum lectus neque quis justo. Duis purus purus, semper eu consectetur nec, interdum id felis. In at nulla sit amet velit sollicitudin cursus at id magna. Pellentesque lorem tellus, sollicitudin in mollis eu, gravida sit amet nunc. Cras sit amet tristique eros. Etiam porttitor ultricies lacus id ornare. Phasellus lorem velit, suscipit nec ullamcorper scelerisque, condimentum at urna.
-</p>		
+<span class="dropcap">M</span>
+{{ $subject->body}}	
 				<div class="hr">
 								</div>
 				<ul class="blog-medium">

@@ -10,23 +10,28 @@
 		{{ HTML::style('fancybox/jquery.fancybox-1.3.4.css');}}
 		{{ HTML::style('css/nivo-slider.css') }}
 		{{ HTML::style('css/styler-farbtastic.css') }}
-	<link rel="stylesheet" href="../css/lightbox.css" type="text/css" media="screen" charset="utf-8" />
+		{{ HTML::style('redactor/redactor.css') }}
+ 
 		<link href='http://fonts.googleapis.com/css?family=Headland+One' rel='stylesheet' type='text/css'>
  
 		{{ HTML::script('js/jquery.min.js') }}
-		{{ HTML::script('js/jquery-1.7.2.min.js') }}
 		{{ HTML::script('js/jquery-ui-1.8.17.custom.min.js') }}
-<script src="../js/lightbox.js" type="text/javascript" charset="utf-8"></script>
 		{{ HTML::script('fancybox/jquery.fancybox-1.3.4.pack.js') }}
 		{{ HTML::script('js/jquery.nivo.slider.js') }}
- 
 		{{ HTML::script('js/jquery.bgslider.js') }}
 		{{ HTML::script('js/preloader.js') }}
-		{{ HTML::script('js/farbtastic.js') }}
+		{{ HTML::script('redactor/redactor.js') }}
+ 
+ 
 		{{ HTML::script('js/basic.js') }}
-		{{ HTML::script('js/jquery.tinycarousel.js') }}
-		{{ HTML::script('js/styler.js') }}	
-		{{ HTML::script('js/contact_form.js') }}
+		{{ HTML::script('js/ajax/ajaxml.js') }}
+		{{ HTML::script('js/jquery.ba-hashchange.js') }}
+	 
+
+
+ 
+
+
 
 			
 
@@ -38,19 +43,12 @@
 			jQuery(document).ready(function()
 			{jQuery('#page').css({'display':'inline','width':'300px','overflow':'hidden','margin-right':'340px'});
 			jQuery('#sidebar').css({'margin-left':'326px'});});
-			jQuery(window).load(function() {jQuery('#hp_preloader').delay(10).animate({'opacity':'0'},1400,function()
+			jQuery(window).load(function() {jQuery('#hp_preloader').delay(800).animate({'opacity':'0'},1400,function()
 			{jQuery('#slider-nivo').nivoSlider(
 			{controlNav:true,controlNavThumbs:false,keyboardNav:false,pauseOnHover:false,prevText:'',nextText:'',effect:'fade',animSpeed:300,pauseTime:4000});
-			jQuery(this).remove();jQuery('#page').delay(10).animate({'margin-right':'0px','width':'666px'},
-			21);});});
-			
+			jQuery(this).remove();jQuery('#sidebar').delay(800).animate({'margin-left':'0px'},2100);jQuery('#page').delay(800).animate({'margin-right':'0px','width':'666px'},
+			2100);});});
 		</script> 
-		<script type="text/javascript" >
-tinyMCE.init({
-        mode : "textareas",
-        theme : "simple"   //(n.b. no trailing comma, this will be critical as you experiment later)
-});
-</script >
 
 		<meta charset="UTF-8">
 	</head>
@@ -66,17 +64,7 @@ tinyMCE.init({
 		<!-- PAGE LOADING -->
 		<div id="hp_preloader"></div>
 		<!-- STYLER FOR DEMO -->
-		<div id="styler">
-			
-			
-				<ul id="texture">
-					<li><a href="#" id="styler-texture-1">None</a></li>
-					<li id="selected"><a href="#" id="styler-texture-2">Leather</a></li>
-					<li><a href="#" id="styler-texture-3">Carbon</a></li>
-				</ul>
-
-		
-			</div>
+ 
 
 			<!-- SITE WRAPPER -->
 <div id="wrapper">
@@ -150,24 +138,7 @@ tinyMCE.init({
 
 	</div>
 	<!-- #sidebar ends -->
-	<script type="text/javascript" charset="utf-8">
-			$(document).ready(function(){
-				$("area[rel^='prettyPhoto']").prettyPhoto();
-				
-				$(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'normal',theme:'light_square',slideshow:3000, autoplay_slideshow: true});
-				$(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({animation_speed:'fast',slideshow:10000, hideflash: true});
-		
-				$("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
-					custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
-					changepicturecallback: function(){ initialize(); }
-				});
 
-				$("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
-					custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
-					changepicturecallback: function(){ _bsap.exec(); }
-				});
-			});
-			</script>
 	</div>
 	<!-- #wrapper ends -->
 	<!-- BACKGROUND SLIDER -->

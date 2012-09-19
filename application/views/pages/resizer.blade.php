@@ -11,7 +11,7 @@
 						<div class="hr"></div>
 
  
- {{ Form::open_for_files('resizer') }}
+ {{ Form::open_for_files('ajax') }}
  
   {{  Form::file('picture') }}
  

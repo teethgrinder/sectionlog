@@ -31,8 +31,7 @@
 |		});
 |
 */
-Route::controller('pages',
-'ajax'); 
+Route::controller('pages'); 
 Route::get('/',array('as'=>'articles','uses'=>'pages@articles'));
 
 Route::get('abouts',array('as'=>'abouts','uses'=>'pages@abouts'));
@@ -94,16 +93,16 @@ return View::make('pages.resizer')->with('user', $user);
 }));
 Route::post('resizer', function() {
 $img = Input::file('picture');
-$id = Image::create(array($img['name']));
+ 
 // Save a thumbnail
-$success = Resizer::open( $img )
-->resize( 200 , 200 , 'crop' )
-->save( 'images/'.$id->id.'.ext' , 90 );
+	 $success = Resizer::open( $img )
+	->resize( 200 , 200 , 'crop' )
+  ->save( 'images/my-new-filename.jpg' , 90 );
 if ( $success ) {
-return 'woohoo';
- print_r($img);
+ echo $success;
+echo 'woohoo';
 } else {
-return 'lame';
+echo 'lame';
 }
 });
 
@@ -129,6 +128,7 @@ Route::get('logout', function() {
 		 Auth::logout();
 		return Redirect::to('/');
 });
+Route::get('heroes',array('uses'=>'pages@heroes'));
 /*
 |--------------------------------------------------------------------------
 | Application 404 & 500 Error Handlers

@@ -151,23 +151,9 @@
 		{{ HTML::image('images/bgslider-5.jpg') }}
  </div>
 
-<script>var baseUrl = function()
-{
-var l = window.location;
-var base_url = l.protocol + "//" + l.host + "/" + l.pathname.split('/')[1];
-return base_url;
-};</script>
-				    <script type="text/javascript">
-    $(document).ready(
-    function()
-    {
-    $('#body').redactor({
-	fixed: true,
-imageUpload: baseUrl()+'/public/questions/ajax/upload',
-imageGetJson: baseUrl()+'/public/questions/ajax/images'
-});
-    }
-    );
-    </script>
+<script type="text/javascript">
+$(document).ready(function()
+{$('#body').redactor({ imageUpload: 'pages/photo_upload/1' });});
+</script>
 </body>
 </html>
