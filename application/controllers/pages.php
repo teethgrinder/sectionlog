@@ -15,42 +15,42 @@ class Pages_Controller extends Base_Controller {
 				return View::make('layouts.default')->nest('content','articles',array('articles'=>$articles,'posts'=>$posts,'subject'=>$subject));
 			}
 			
-		public function get_abouts(){
+		public function get_hakkimizda(){
 		$subject = Subject::find(1);
-	  return View::make('layouts.default')->nest('content','abouts',array('subject'=>$subject));
+	  return View::make('layouts.default')->nest('content','hakkimizda',array('subject'=>$subject));
 		}
-		public function get_services(){
+		public function get_hizmetlerimiz(){
 		$subject = Subject::find(2);
-	   return View::make('layouts.default2')->nest('content','services',array('subject'=>$subject));
+	   return View::make('layouts.default')->nest('content','services',array('subject'=>$subject));
 		}
-		public function get_neuro(){
+		public function get_neurofeedback(){
 		$subject = Subject::find(2);
-	   return View::make('layouts.default2')->nest('content','neuro',array('subject'=>$subject));
+	   return View::make('layouts.default')->nest('content','neuro',array('subject'=>$subject));
 		}
-		public function get_bio(){
+		public function get_biofeedback(){
 		$subject = Subject::find(2);
-	   return View::make('layouts.default2')->nest('content','bio',array('subject'=>$subject));
+	   return View::make('layouts.default')->nest('content','bio',array('subject'=>$subject));
 		}
-		public function get_contact(){
+		public function get_iletisim(){
  
-	   return View::make('layouts.default2')->nest('content','contact');
+	   return View::make('layouts.default')->nest('content','contact');
 		}
-		public function get_map(){
+		public function get_harita(){
  
-	  return View::make('layouts.default2')->nest('content','map');
+	  return View::make('layouts.default')->nest('content','map');
 		}
 		
 		public function get_haberler(){
 			$posts = Post::with('author')->order_by('id','desc')->get();
-			 return View::make('layouts.default2')->nest('content','haberler',array('posts'=>$posts));
+			 return View::make('layouts.default')->nest('content','haberler',array('posts'=>$posts));
 		}
 		public function get_gallery(){
 		 
-			  return View::make('layouts.default2')->nest('content','gallery');
+			  return View::make('layouts.default')->nest('content','gallery');
 		}
 		public function get_heroes(){
 		 
-			  return View::make('layouts.default2')->nest('content','heroes');
+			  return View::make('layouts.default')->nest('content','heroes');
 		}
 		public function post_photo_upload($page_id) {
 		$path = path('base').'/public/img/page/' . (int)$page_id;

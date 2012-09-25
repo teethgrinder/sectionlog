@@ -1,7 +1,8 @@
 @layout('layouts.default')
 @section('content')
- 
-		<div class="hr1"></div>
+ <div id="content">
+	 <h1>Haber Giriş ya da Düzenleme için Giriş yapın</h1>
+		<div class="hr"></div>
     {{ Form::open('login') }}
         <!-- check for login errors flash var -->
         @if (Session::has('login_errors'))
@@ -20,5 +21,5 @@
 					<div class="hr2"></div>
 					<!-- PURCHASE BUTTON -->
 					<!-- FEATURE TEXTS WITH SMALL ICONS -->
- 
+ </div>
 @endsection

@@ -1,6 +1,6 @@
 @layout('layouts.default')
 @section('title')
-Hakkımızda
+Galeri
 @endsection
 @section('content')
 	<div id="content">

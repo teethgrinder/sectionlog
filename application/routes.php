@@ -34,21 +34,68 @@
 Route::controller('pages'); 
 Route::get('/',array('as'=>'articles','uses'=>'pages@articles'));
 
-Route::get('abouts',array('as'=>'abouts','uses'=>'pages@abouts'));
-Route::get('services',array('as'=>'services','uses'=>'pages@services'));
-Route::get('neuro',array('as'=>'neuro','uses'=>'pages@neuro'));
-Route::get('bio',array('as'=>'bio','uses'=>'pages@bio'));
-Route::get('contact',array('as'=>'contact','uses'=>'pages@contact'));
-Route::get('map',array('as'=>'map','uses'=>'pages@map'));
+Route::get('hakkimizda',array('as'=>'hakkimizda','uses'=>'pages@hakkimizda'));
+Route::get('hizmetlerimiz',array('as'=>'hizmetlerimiz','uses'=>'pages@hizmetlerimiz'));
+Route::get('neurofeedback',array('as'=>'neurofeedback','uses'=>'pages@neurofeedback'));
+Route::get('biofeedback',array('as'=>'biofeedback','uses'=>'pages@biofeedback'));
+Route::get('iletisim',array('as'=>'iletisim','uses'=>'pages@iletisim'));
+Route::get('harita',array('as'=>'harita','uses'=>'pages@harita'));
 Route::get('haberler',array('as'=>'haberler','uses'=>'pages@haberler'));
-Route::get('gallery',array('as'=>'gallery','uses'=>'pages@gallery'));
+Route::get('galeri',array('as'=>'galeri','uses'=>'pages@galeri'));
 
 Route::get('view/(:num)', function($post) {
 	$post = Post::find($post);
 	return View::make('pages.full')
 	->with('post', $post);
 });
-    
+Route::get('post/(:num)', array('before'=> 'auth', 'do' => function($post) {
+	$user = Auth::user();
+	$post = Post::find($post);
+	return View::make('pages.edit')->with('post', $post)->with('user', $user);
+}));  
+Route::put('post/(:num)', array('before'=> 'auth', 'do' => function($post) {
+	$title = Input::get('title');
+	$body = Input::get('body');
+	$edit_post = array(
+        'title'    => $title,
+        'body'     => $body
+         
+    );
+    $rules = array(
+'title' => 'required|min:3|max:128',
+'body' => 'required'
+);
+// make the validator
+$v = Validator::make($edit_post, $rules);
+if ( $v->fails() )
+{
+// redirect back to the form with
+// errors, input and our currently
+// logged in user
+return Redirect::to('admin')
+->with('user', Auth::user())
+->with_errors($v)
+->with_input();
+} 
+      // save the post after passing validation
+    $post = Post::with('user')->find($id);
+    $post->title = $title;
+    $post->body = $body;
+    $post->save();
+    return Redirect::to('view/'.$post->id);
+}));
+
+Route::delete('post/(:num)', array('before' => 'auth', 'do' => function($post){
+	$user = Auth::user();
+    $delete_post =  Post::find($post);
+    $delete_post -> delete();
+    return Redirect::to('/')
+            ->with('success_message', true);
+})) ;
+
+
+
+
 Route::get('admin', array('before' => 'auth', 'do' => function() {
 $user = Auth::user();
 return View::make('pages.new')->with('user', $user);
@@ -62,6 +109,8 @@ $new_post = array(
 'body' => Input::get('body'),
 'author_id' => Input::get('author_id')
 );
+
+   
 // let's setup some rules for our new data
 // I'm sure you can come up with better ones
 $rules = array(
@@ -87,6 +136,10 @@ $post->save();
 // redirect to viewing our new post
 return Redirect::to('view/'.$post->id);
 });
+
+//edit the post 
+
+ 
 Route::get('resizer', array('before' => 'auth', 'do' => function() {
 $user = Auth::user();
 return View::make('pages.resizer')->with('user', $user);

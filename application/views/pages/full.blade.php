@@ -8,6 +8,14 @@
 <div class="post">
 <h1>{{ HTML::link('view/'.$post->id, $post->title) }}</h1>
 <p>{{ $post->body }}</p>
+			@if ( !Auth::guest() )
+              	{{ Form::open('post/'.$post->id, 'DELETE')}}
+	       {{ Form::submit('Sil') }}
+	    		{{ Form::close() }}
+	    		 {{ Form::open('post/'.$post->id, 'GET')}}
+                {{ Form::submit('Düzenle') }}
+                {{ Form::close() }}
+    		@endif
 <p>{{ HTML::link('haberler', '&larr; Tümü.') }}</p>
 </div>
 </div>

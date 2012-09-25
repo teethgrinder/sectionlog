@@ -10,6 +10,7 @@
 		{{ HTML::style('fancybox/jquery.fancybox-1.3.4.css');}}
 		{{ HTML::style('css/nivo-slider.css') }}
 		{{ HTML::style('css/styler-farbtastic.css') }}
+		
 		{{ HTML::style('redactor/redactor.css') }}
  
 		<link href='http://fonts.googleapis.com/css?family=Headland+One' rel='stylesheet' type='text/css'>
@@ -20,12 +21,13 @@
 		{{ HTML::script('js/jquery.nivo.slider.js') }}
 		{{ HTML::script('js/jquery.bgslider.js') }}
 		{{ HTML::script('js/preloader.js') }}
+		{{ HTML::script('redactor/tr.js') }}
 		{{ HTML::script('redactor/redactor.js') }}
+	 
  
  
 		{{ HTML::script('js/basic.js') }}
-		{{ HTML::script('js/ajax/ajaxml.js') }}
-		{{ HTML::script('js/jquery.ba-hashchange.js') }}
+
 	 
 
 
@@ -39,6 +41,7 @@
 			<!--[if lt IE 8]><link href="css/stop_ie.css" rel="stylesheet" type="text/css" /><![endif]--><!-- JAVASCRIPTS -->
 			
 		<!-- PAGE OPENING ANIMATION -->
+		@if(URI::current() == '/')
 		<script type="text/javascript">
 			jQuery(document).ready(function()
 			{jQuery('#page').css({'display':'inline','width':'300px','overflow':'hidden','margin-right':'340px'});
@@ -49,7 +52,7 @@
 			jQuery(this).remove();jQuery('#sidebar').delay(800).animate({'margin-left':'0px'},2100);jQuery('#page').delay(800).animate({'margin-right':'0px','width':'666px'},
 			2100);});});
 		</script> 
-
+@endif
 		<meta charset="UTF-8">
 	</head>
 	<body>
@@ -62,7 +65,9 @@
 		<a href="http://www.mozilla.org/en-US/firefox/new/?from=getfirefox">Firefox</a> or <a href="https://www.google.com/chrome">Chrome</a>!
 		</div>
 		<!-- PAGE LOADING -->
+		@if(URI::current() == '/')
 		<div id="hp_preloader"></div>
+		@endif
 		<!-- STYLER FOR DEMO -->
  
 
@@ -98,23 +103,23 @@
 		<!-- MENU -->
    <ul id="menu">
    <li class="current"><a href="<?php echo URL::to('/'); ?>">ANASAYFA</a></li>
-   <li>{{HTML::link_to_route('abouts', 'HAKKIMIZDA', array(), array( 'into'=>'content'))}}</li>
+   <li>{{HTML::link_to_route('hakkimizda', 'HAKKIMIZDA')}}</li>
 
    <li>HİZMETLERİMİZ
 		<ul>
-			<li>{{HTML::link_to_route('services', 'Eğitim Hizmetlerimiz', array(), array('data-hash' => 'services','into'=>'content'))}}</li>
-			<li>{{HTML::link_to_route('neuro', 'Neurofeedback', array(), array('data-hash' => 'neuro'))}}</li>
-			<li>{{HTML::link_to_route('bio', 'Biofeedback', array(), array('data-hash' => 'bio'))}}</li>
+			<li>{{HTML::link_to_route('hizmetlerimiz', 'Eğitim Hizmetlerimiz')}}</li>
+			<li>{{HTML::link_to_route('neurofeedback', 'Neurofeedback')}}</li>
+			<li>{{HTML::link_to_route('biofeedback', 'Biofeedback')}}</li>
 	</ul>	
 </li>		
-<li>{{HTML::link_to_route('haberler', 'HABERLER', array(), array('data-hash' => 'haberler'))}}</li>
-<li>{{HTML::link_to_route('gallery', 'GALERİ', array(), array('data-hash' => 'gallery'))}}</li>
+<li>{{HTML::link_to_route('haberler', 'HABERLER')}}</li>
+<li>{{HTML::link_to_route('galeri', 'GALERİ')}}</li>
 		 
 		<li><a href="./blog4.html">SANAL TUR</a></li>
 		<li>BİZE ULAŞIN
 			<ul>
-			<li>{{HTML::link_to_route('contact', 'İletişim Formu', array(), array('data-hash' => 'contact'))}}</li>
-			<li>{{HTML::link_to_route('map', 'İletişim Bilgileri', array(), array('data-hash' => 'map'))}}</li>
+			<li>{{HTML::link_to_route('iletisim','İletişim')}}</li>
+			<li>{{HTML::link_to_route('harita','Harita')}}</li>
 			</ul>
 		</li>
 		
@@ -153,7 +158,7 @@
 
 <script type="text/javascript">
 $(document).ready(function()
-{$('#body').redactor({ imageUpload: 'pages/photo_upload/1' });});
+{$('#body').redactor({ imageUpload: '/pages/photo_upload/1', lang: 'tr' });});
 </script>
 </body>
 </html>

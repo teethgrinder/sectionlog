@@ -8,7 +8,7 @@ Hakkımızda
 		<!-- WELCOME TEXT -->
 			<div class="hr"></div>
 		
- Section::inject('title', 'Abouts title !');
+ 
 	<ul>
 		<li>
 		<h3 style="text-align: center;"> 
@@ -17,6 +17,7 @@ Hakkımızda
 			 <blockquote class="align_right">
 <h1>Pürdikkat eğitim için</h1>
 </blockquote>
+<br />
 		{{ $subject->body}}
 	</li>
  

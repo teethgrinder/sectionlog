@@ -40,14 +40,14 @@
 			
 		<!-- PAGE OPENING ANIMATION -->
 		<script type="text/javascript">
-			jQuery(document).ready(function()
+		  /*	jQuery(document).ready(function()
 			{jQuery('#page').css({'display':'inline','width':'300px','overflow':'hidden','margin-right':'340px'});
 			jQuery('#sidebar').css({'margin-left':'326px'});});
-			jQuery(window).load(function() {jQuery('#hp_preloader').delay(800).animate({'opacity':'0'},1400,function()
+			jQuery(window).load(function() {jQuery('#hp_preloader').delay(5).animate({'opacity':'0'},10,function()
 			{jQuery('#slider-nivo').nivoSlider(
 			{controlNav:true,controlNavThumbs:false,keyboardNav:false,pauseOnHover:false,prevText:'',nextText:'',effect:'fade',animSpeed:300,pauseTime:4000});
-			jQuery(this).remove();jQuery('#sidebar').delay(800).animate({'margin-left':'0px'},2100);jQuery('#page').delay(800).animate({'margin-right':'0px','width':'666px'},
-			2100);});});
+    	jQuery(this).remove();jQuery('#sidebar').delay(800).animate({'margin-left':'0px'},2100);jQuery('#page').delay(800).animate({'margin-right':'0px','width':'666px'},
+	2100);});})*/	
 		</script> 
 
 		<meta charset="UTF-8">
@@ -62,7 +62,7 @@
 		<a href="http://www.mozilla.org/en-US/firefox/new/?from=getfirefox">Firefox</a> or <a href="https://www.google.com/chrome">Chrome</a>!
 		</div>
 		<!-- PAGE LOADING -->
-		<div id="hp_preloader"></div>
+	<!--	<div id="hp_preloader"></div> -->
 		<!-- STYLER FOR DEMO -->
  
 
@@ -87,7 +87,7 @@
 		<!-- SIDEBAR RADIAL GRADIENT LIGHT LAYER -->
 		<div id="sidebar-texture">
 		</div>
-		<!-- SIDEBAR TEXTURE LAYER -->
+		<!-- SIDEBhttps://github.com/teethgrinder/sectionlog/blob/master/application/views/layouts/default2.blade.phpAR TEXTURE LAYER -->
 		<!-- SIDEBAR CONTENT LAYER -->
 		<div id="sidebar-content">
 			<!-- LOGO -->
@@ -95,25 +95,25 @@
 			<a href="./index.html">{{ HTML::image('images/logo.png') }}</a>
 		</div>
 		<!-- MENU -->
-   <ul id="menu">
+ <ul id="menu">
    <li class="current"><a href="<?php echo URL::to('/'); ?>">ANASAYFA</a></li>
-   <li>{{HTML::link_to_action('abouts', 'HAKKIMIZDA', array(), array('data-hash' => 'abouts'))}}</li>
+   <li>{{HTML::link_to_route('hakkimizda', 'HAKKIMIZDA')}}</li>
 
    <li>HİZMETLERİMİZ
 		<ul>
-			<li>{{HTML::link_to_route('services', 'Eğitim Hizmetlerimiz', array(), array('data-hash' => 'services'))}}</li>
-			<li>{{HTML::link_to_route('neuro', 'Neurofeedback', array(), array('data-hash' => 'neuro'))}}</li>
-			<li>{{HTML::link_to_route('bio', 'Biofeedback', array(), array('data-hash' => 'bio'))}}</li>
+			<li>{{HTML::link_to_route('hizmetlerimiz', 'Eğitim Hizmetlerimiz')}}</li>
+			<li>{{HTML::link_to_route('neurofeedback', 'Neurofeedback')}}</li>
+			<li>{{HTML::link_to_route('biofeedback', 'Biofeedback')}}</li>
 	</ul>	
 </li>		
-<li>{{HTML::link_to_route('haberler', 'HABERLER', array(), array('data-hash' => 'haberler'))}}</li>
-<li>{{HTML::link_to_route('gallery', 'GALERİ', array(), array('data-hash' => 'gallery'))}}</li>
+<li>{{HTML::link_to_route('haberler', 'HABERLER')}}</li>
+<li>{{HTML::link_to_route('galeri', 'GALERİ')}}</li>
 		 
 		<li><a href="./blog4.html">SANAL TUR</a></li>
 		<li>BİZE ULAŞIN
 			<ul>
-			<li>{{HTML::link_to_route('contact', 'İletişim Formu', array(), array('data-hash' => 'contact'))}}</li>
-			<li>{{HTML::link_to_route('map', 'İletişim Bilgileri', array(), array('data-hash' => 'map'))}}</li>
+			<li>{{HTML::link_to_route('iletisim','İletişim')}}</li>
+			<li>{{HTML::link_to_route('harita','Harita')}}</li>
 			</ul>
 		</li>
 		
@@ -122,8 +122,8 @@
 </div>
 
 	<ul id="sidebar-bottom">
-		<li><a href="#">{{ HTML::image('images/facebook.png') }}</a></li>
-		<li><a href="#">{{ HTML::image('images/twitter.png') }}</a></li>
+		<li><a href="#">{{ HTML::image('images/sidebar_icons/facebook.png') }}</a></li>
+		<li><a href="#">{{ HTML::image('images/sidebar_icons/twitter.png') }}</a></li>
 			 @if ( Auth::guest() )
 <li>{{ HTML::link('admin', 'Giriş') }}</li>
 @else

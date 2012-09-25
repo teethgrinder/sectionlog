@@ -1,6 +1,6 @@
 @layout('layouts.default')
 @section('title')
- Neurofeedback
+ Biofeedback
 @endsection
 @section('content')
 <div id="content">

@@ -1,6 +1,10 @@
+
 @layout('layouts.default')
+@section('title')
+Giriş
+@endsection
 @section('content')
-<div class="span4 offset4 well">
+
     {{ Form::open('login') }}
         <!-- check for login errors flash var -->
         @if (Session::has('login_errors'))
