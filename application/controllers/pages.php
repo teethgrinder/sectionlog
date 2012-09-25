@@ -44,7 +44,7 @@ class Pages_Controller extends Base_Controller {
 			$posts = Post::with('author')->order_by('id','desc')->get();
 			 return View::make('layouts.default')->nest('content','haberler',array('posts'=>$posts));
 		}
-		public function get_gallery(){
+		public function get_galeri(){
 		 
 			  return View::make('layouts.default')->nest('content','gallery');
 		}
